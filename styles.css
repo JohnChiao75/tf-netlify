@@ -6,40 +6,98 @@
 }
 
 :root {
-    --primary: #0ea5e9;
-    --primary-dark: #0284c7;
-    --primary-light: #38bdf8;
-    --bg-dark: #0c4a6e;
-    --bg-darker: #082f49;
+    /* ===== 暗色主题（默认） ===== */
+    /* 背景与卡片 */
+    --bg-body: linear-gradient(135deg, #0c4a6e 0%, #082f49 100%);
+    --bg-navbar: rgba(8, 47, 73, 0.95);
     --bg-card: #083344;
+    --bg-card-hover: rgba(56, 189, 248, 0.05);
+    --bg-input: rgba(8, 51, 68, 0.5);
+    --bg-tag: rgba(56, 189, 248, 0.1);
+    --bg-tag-supported: rgba(52, 211, 153, 0.2);
+    --bg-tag-border: rgba(56, 189, 248, 0.3);
+    --bg-feature-box: rgba(7, 89, 133, 0.3);
+    --bg-modal-overlay: rgba(8, 47, 73, 0.9);
+
+    /* 文字颜色 */
     --text-primary: #f0f9ff;
     --text-secondary: #e0f2fe;
     --text-muted: #7dd3fc;
+    --text-inverse: #0c4a6e;
+    /* 用于亮色背景上的文字 */
+
+    /* 边框与阴影 */
     --border: rgba(56, 189, 248, 0.2);
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 15px 35px rgba(14, 165, 233, 0.2);
+    --shadow-info: 0 4px 15px rgba(14, 165, 233, 0.3);
+
+    /* 强调色（不随主题变化，保持品牌蓝） */
+    --primary: #0ea5e9;
+    --primary-dark: #0284c7;
+    --primary-light: #38bdf8;
+
+    /* 状态色 */
     --warning: #fbbf24;
     --danger: #f87171;
     --success: #34d399;
+
+    /* 其他 */
+    --badge-color: #0c4a6e;
+    --footer-border: var(--border);
 }
 
+/* ===== 亮色主题 ===== */
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-body: #f1f5f9;
+        --bg-navbar: rgba(255, 255, 255, 0.95);
+        --bg-card: #ffffff;
+        --bg-card-hover: rgba(14, 165, 233, 0.04);
+        --bg-input: rgba(255, 255, 255, 0.5);
+        --bg-tag: rgba(14, 165, 233, 0.08);
+        --bg-tag-supported: rgba(52, 211, 153, 0.15);
+        --bg-tag-border: rgba(14, 165, 233, 0.25);
+        --bg-feature-box: rgba(14, 165, 233, 0.06);
+        --bg-modal-overlay: rgba(0, 0, 0, 0.5);
+
+        --text-primary: #0f172a;
+        --text-secondary: #1e293b;
+        --text-muted: #475569;
+        --text-inverse: #ffffff;
+
+        --border: #e2e8f0;
+        --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.12);
+        --shadow-info: 0 4px 15px rgba(14, 165, 233, 0.3);
+
+        --badge-color: #ffffff;
+        --footer-border: #d1d5db;
+    }
+}
+
+/* ---------- 全局 ---------- */
 body {
-    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+    background: var(--bg-body);
     color: var(--text-primary);
     min-height: 100vh;
     line-height: 1.6;
     padding-top: 70px;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* 导航栏 */
+/* ---------- 导航栏 ---------- */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(8, 47, 73, 0.95);
+    background: var(--bg-navbar);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     z-index: 1000;
     padding: 0 20px;
+    transition: background 0.3s, border-color 0.3s;
 }
 
 .navbar-content {
@@ -99,7 +157,7 @@ body {
     color: var(--primary-light);
 }
 
-/* 页面部分 */
+/* ---------- 页面容器 ---------- */
 .page-section {
     display: none;
     max-width: 1200px;
@@ -117,24 +175,26 @@ body {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* ========== 首页样式 ========== */
+/* ---------- 首页 - 信息条 ---------- */
 .info-bar {
     background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
+    color: #fff;
     padding: 12px 24px;
     border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
-    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+    box-shadow: var(--shadow-info);
     animation: pulse 3s infinite;
+    transition: box-shadow 0.3s;
 }
 
 .info-bar-left {
@@ -145,7 +205,7 @@ body {
 
 .info-bar .badge {
     background-color: var(--warning);
-    color: #0c4a6e;
+    color: var(--badge-color);
     padding: 4px 10px;
     border-radius: 20px;
     font-size: 14px;
@@ -154,7 +214,7 @@ body {
 
 .info-bar-right a,
 .info-bar-right span {
-    color: white;
+    color: #fff;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -172,6 +232,7 @@ body {
     transform: translateY(-2px);
 }
 
+/* ---------- 首页 - 标题 ---------- */
 .header {
     text-align: center;
     margin-bottom: 60px;
@@ -198,6 +259,7 @@ body {
     font-weight: 300;
 }
 
+/* ---------- 首页 - 功能卡片 ---------- */
 .links-section {
     display: flex;
     justify-content: center;
@@ -207,19 +269,19 @@ body {
 }
 
 .link-card {
-    background: rgba(8, 51, 68, 0.7);
+    background: var(--bg-card);
     border-radius: 16px;
     padding: 30px;
     width: 280px;
     text-align: center;
     transition: all 0.3s;
     border: 1px solid var(--border);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow);
 }
 
 .link-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(14, 165, 233, 0.2);
+    box-shadow: var(--shadow-hover);
     border-color: rgba(56, 189, 248, 0.4);
 }
 
@@ -246,7 +308,7 @@ body {
     display: inline-block;
     padding: 12px 28px;
     background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
+    color: #fff;
     text-decoration: none;
     border-radius: 10px;
     font-weight: 600;
@@ -260,6 +322,7 @@ body {
     box-shadow: 0 5px 15px rgba(2, 132, 199, 0.4);
 }
 
+/* ---------- 首页 - GitHub 链接 ---------- */
 .github-section {
     text-align: center;
     margin-bottom: 60px;
@@ -269,7 +332,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 15px;
-    background: rgba(8, 51, 68, 0.9);
+    background: var(--bg-card);
     padding: 20px 30px;
     border-radius: 16px;
     text-decoration: none;
@@ -277,13 +340,13 @@ body {
     font-size: 1.3rem;
     transition: all 0.3s;
     border: 1px solid var(--border);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow);
 }
 
 .github-link:hover {
-    background: rgba(8, 47, 73, 0.95);
+    background: var(--bg-card);
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-hover);
 }
 
 .github-icon {
@@ -291,7 +354,7 @@ body {
     color: var(--text-primary);
 }
 
-/* ========== 下载页样式 ========== */
+/* ---------- 下载页 ---------- */
 .download-container {
     max-width: 1000px;
     margin: 0 auto;
@@ -322,7 +385,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(14, 165, 233, 0.2);
+    background: var(--bg-tag);
     border: 1px solid var(--primary);
     color: var(--primary-light);
     padding: 8px 16px;
@@ -331,13 +394,14 @@ body {
     margin-bottom: 30px;
 }
 
+/* ---------- 下载 - 控制栏 ---------- */
 .control-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
     padding: 15px 20px;
-    background: rgba(8, 51, 68, 0.5);
+    background: var(--bg-input);
     border-radius: 12px;
     border: 1px solid var(--border);
 }
@@ -374,6 +438,7 @@ body {
     cursor: pointer;
 }
 
+/* ---------- 下载 - 列表 ---------- */
 .download-list {
     display: flex;
     flex-direction: column;
@@ -386,11 +451,12 @@ body {
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: var(--shadow);
 }
 
 .download-item:hover {
     border-color: rgba(56, 189, 248, 0.4);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-hover);
 }
 
 .download-item.hidden {
@@ -411,7 +477,7 @@ body {
 }
 
 .item-header:hover {
-    background: rgba(56, 189, 248, 0.05);
+    background: var(--bg-card-hover);
 }
 
 .expand-icon {
@@ -442,7 +508,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    color: white;
+    color: #fff;
     flex-shrink: 0;
 }
 
@@ -467,10 +533,11 @@ body {
 .version-abbr {
     font-size: 0.85rem;
     color: var(--primary-light);
-    background: rgba(14, 165, 233, 0.2);
+    background: var(--bg-tag);
     padding: 2px 8px;
     border-radius: 4px;
     font-weight: 600;
+    border: 1px solid var(--bg-tag-border);
 }
 
 .obsolete-tag {
@@ -509,15 +576,15 @@ body {
     align-items: center;
     gap: 4px;
     padding: 5px 10px;
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: var(--bg-tag);
+    border: 1px solid var(--bg-tag-border);
     border-radius: 6px;
     font-size: 0.8rem;
     color: var(--text-muted);
 }
 
 .platform-tag.supported {
-    background: rgba(52, 211, 153, 0.2);
+    background: var(--bg-tag-supported);
     border-color: var(--success);
     color: var(--success);
 }
@@ -532,7 +599,7 @@ body {
     gap: 8px;
     padding: 12px 24px;
     background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
+    color: #fff;
     text-decoration: none;
     border-radius: 10px;
     font-weight: 600;
@@ -554,11 +621,12 @@ body {
     box-shadow: none;
 }
 
+/* ---------- 下载 - 展开详情 ---------- */
 .item-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
-    background: rgba(7, 89, 133, 0.2);
+    background: var(--bg-card-hover);
 }
 
 .download-item.expanded .item-content {
@@ -610,7 +678,7 @@ body {
 
 .feature-tag {
     padding: 4px 12px;
-    background: rgba(56, 189, 248, 0.15);
+    background: var(--bg-tag);
     border-radius: 20px;
     font-size: 0.85rem;
     color: var(--primary-light);
@@ -627,7 +695,7 @@ body {
 }
 
 .compat-badge.supported {
-    background: rgba(52, 211, 153, 0.2);
+    background: var(--bg-tag-supported);
     color: var(--success);
 }
 
@@ -641,10 +709,11 @@ body {
     color: var(--danger);
 }
 
+/* ---------- 下载 - 版本说明 ---------- */
 .notes-section {
     margin-top: 40px;
     padding: 25px;
-    background: rgba(8, 51, 68, 0.5);
+    background: var(--bg-input);
     border-radius: 12px;
     border: 1px solid var(--border);
 }
@@ -681,12 +750,12 @@ body {
     color: var(--warning);
 }
 
-/* 页脚 */
+/* ---------- 页脚 ---------- */
 .footer {
     text-align: center;
     padding: 30px 0;
     color: var(--text-muted);
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--footer-border);
     margin-top: 40px;
 }
 
@@ -708,22 +777,26 @@ body {
     color: var(--primary-light);
 }
 
-/* 动画 */
+/* ---------- 动画 ---------- */
 @keyframes pulse {
+
     0%,
     100% {
-        box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+        box-shadow: var(--shadow-info);
     }
+
     50% {
         box-shadow: 0 4px 25px rgba(14, 165, 233, 0.5);
     }
 }
 
 @keyframes float {
+
     0%,
     100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
@@ -733,7 +806,7 @@ body {
     animation: float 5s ease-in-out infinite;
 }
 
-/* 响应式 */
+/* ---------- 响应式 ---------- */
 @media (max-width: 768px) {
     .navbar-nav {
         display: none;
@@ -799,14 +872,14 @@ body {
     }
 }
 
-/* 模态框 */
+/* ---------- 模态框 ---------- */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(8, 47, 73, 0.9);
+    background: var(--bg-modal-overlay);
     display: none;
     align-items: center;
     justify-content: center;
@@ -824,7 +897,7 @@ body {
     max-width: 600px;
     width: 90%;
     border: 1px solid var(--primary);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow-hover);
 }
 
 .modal-header {
@@ -855,7 +928,7 @@ body {
 .feature-box {
     margin-bottom: 15px;
     padding: 15px;
-    background: rgba(7, 89, 133, 0.3);
+    background: var(--bg-feature-box);
     border-radius: 10px;
 }
 
@@ -872,7 +945,7 @@ body {
 .modal-btn {
     display: inline-block;
     background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
+    color: #fff;
     border: none;
     padding: 12px 30px;
     border-radius: 10px;
