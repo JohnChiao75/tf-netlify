@@ -12,9 +12,9 @@ info:
   # Site title
   title: TouchFish
   # Site subtitle
-  subtitle: TouchFish Offical Website
+  subtitle: Welcome to my blog
   # Author name
-  author: TouchFish Community
+  author: John Chiao
   # Site URL
   url: https://touchfish.us.ci
 # BASIC INFORMATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
@@ -23,11 +23,11 @@ info:
 # Docs: https://redefine-docs.ohevan.com/basic/defaults
 defaults:
   # Favicon
-  favicon: https://touchfish.ilovescratch.us.ci/logo.png
+  favicon: https://cdn.luogu.com.cn/upload/usericon/1366636.png
   # Site logo
-  logo: https://touchfish.ilovescratch.us.ci/logo.png
+  logo: https://cdn.luogu.com.cn/upload/usericon/1366636.png
   # Site avatar
-  avatar: https://touchfish.ilovescratch.us.ci/logo.png
+  avatar: https://cdn.luogu.com.cn/upload/usericon/1366636.png
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # COLORS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
@@ -133,7 +133,7 @@ home_banner:
   subtitle:
     text: [] # subtitle text, array
     hitokoto: # 一言配置
-      enable: false # Whether to enable hitokoto
+      enable: true # Whether to enable hitokoto
       show_author: false # Whether to show author
       api: https://v1.hitokoto.cn # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
     typing_speed: 100 # Typing speed (ms)
@@ -197,7 +197,7 @@ navbar:
     Home:
       path: /
       icon: fa-regular fa-house # can be empty
-    版本历史:
+    Archives:
       path: /archives
       icon: fa-regular fa-archive # can be empty
     Tags:
@@ -212,9 +212,14 @@ navbar:
     # Status:
     #   path: https://status.ohevan.com/
     #   icon: fa-regular fa-chart-bar
-    文档:
-      icon: fa-regular fa-book
-      path: https://touchfish.ilovescratch.us.ci
+    About:
+      icon: fa-regular fa-user
+      submenus:
+        Me: /about
+        Github: https://github.com/JohnChiao75
+    Travellings:
+      icon: fa-regular fa-train-subway
+      path: https://www.travellings.cn/go.html
     #     Blog: https://ohevan.com
     #     Friends: /link
     # Links:
@@ -243,7 +248,7 @@ home:
     announcement: # Announcement text
     show_on_mobile: true # Whether to show sidebar navigation on mobile sheet menu
     links:
-      版本历史:
+      Archives:
         path: /archives
         icon: fa-regular fa-archive # can be empty
       Tags:
