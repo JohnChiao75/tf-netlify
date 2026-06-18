@@ -212,14 +212,8 @@ navbar:
     # Status:
     #   path: https://status.ohevan.com/
     #   icon: fa-regular fa-chart-bar
-    About:
-      icon: fa-regular fa-user
-      submenus:
-        Me: /about
-        Github: https://github.com/JohnChiao75
-    Travellings:
-      icon: fa-regular fa-train-subway
-      path: https://www.travellings.cn/go.html
+    Netlify:
+      path: https://netlify.com
     #     Blog: https://ohevan.com
     #     Friends: /link
     # Links:
