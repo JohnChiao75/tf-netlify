@@ -12,9 +12,9 @@ info:
   # Site title
   title: TouchFish
   # Site subtitle
-  subtitle: Welcome to my blog
+  subtitle:
   # Author name
-  author: John Chiao
+  author: TouchFish Community
   # Site URL
   url: https://touchfish.us.ci
 # BASIC INFORMATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
@@ -23,11 +23,11 @@ info:
 # Docs: https://redefine-docs.ohevan.com/basic/defaults
 defaults:
   # Favicon
-  favicon: https://cdn.luogu.com.cn/upload/usericon/1366636.png
+  favicon: https://touchfish.ilovescratch.us.ci/logo.png
   # Site logo
-  logo: https://cdn.luogu.com.cn/upload/usericon/1366636.png
+  logo: https://touchfish.ilovescratch.us.ci/logo.png
   # Site avatar
-  avatar: https://cdn.luogu.com.cn/upload/usericon/1366636.png
+  avatar: https://touchfish.ilovescratch.us.ci/logo.png
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # COLORS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
@@ -197,13 +197,13 @@ navbar:
     Home:
       path: /
       icon: fa-regular fa-house # can be empty
-    Archives:
+    Releases:
       path: /archives
       icon: fa-regular fa-archive # can be empty
     Tags:
       path: /tags
       icon: fa-regular fa-tags # can be empty
-    Categories:
+    Downloads:
       path: /categories
       icon: fa-regular fa-folder # can be empty
     Links:
